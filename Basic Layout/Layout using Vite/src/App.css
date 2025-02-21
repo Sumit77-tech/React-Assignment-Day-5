@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Center the entire layout horizontally */
+  align-items: center; /* Center the layout vertically (optional) */
+  min-height: 100vh; /* Ensures full height */
+  background-color: #f8f9fa; /* Light background for better visibility */
+}
+
+.container {
+  width: 80%; /* Adjust width as needed */
+  max-width: 800px; /* Prevents layout from stretching too much */
+  background: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better aesthetics */
+  border-radius: 8px; /* Optional rounded corners */
+  overflow: hidden; /* Ensures clean edges */
+}
+
+header, footer {
+  background-color: #282c34;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+main {
+  padding: 2rem;
+  text-align: center;
+}
