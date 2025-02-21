@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { firestore } from './firebase-config'; // Assume correct Firebase config
+import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import TaskManager from "./TaskManager";
+import { db } from "./firebase-config";
 
-const TaskList = () => {
+function App() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Real-time listener for Firestore updates
-    const unsubscribe = firestore.collection('tasks').onSnapshot(snapshot => {
-      setTasks(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    const unsubscribe = db.collection("tasks").onSnapshot((snapshot) => {
+      setTasks(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     });
 
-    // Cleanup function to prevent memory leaks
     return () => unsubscribe();
-  }, []); // Empty dependency array to run only once
+  }, []);
 
   return (
     <div>
-      <h1>Tasks</h1>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>{task.name}</li>
-        ))}
-      </ul>
+      <Navbar tasks={tasks} />
+      <TaskManager />
     </div>
   );
-};
+}
 
-export default TaskList;
+export default App;
